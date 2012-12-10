@@ -53,28 +53,6 @@ public abstract class LWJGLAmbition
       LOGGER.log(Level.WARNING, ex.toString(), ex);
     }
   }
-  
-  /* MAIN */
-  public static void main(String args[])
-  {
-    launch("LWJGL Ambition", null, new AScene() 
-    {
-
-      @Override
-      public EUpdateResult update(int t_delta)
-      {
-        // do nothing and repeat
-        return EUpdateResult.CONTINUE;
-      }
-
-      @Override
-      public void render(ICanvas canvas)
-      {
-        canvas.clear();
-        canvas.text("Hello World!", V2.ORIGIN);
-      }
-    }, null);
-  }
 
   /* FUNCTIONS */
   
