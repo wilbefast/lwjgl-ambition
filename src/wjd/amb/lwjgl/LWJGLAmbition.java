@@ -14,27 +14,30 @@
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package wjd.amb;
+package wjd.amb.lwjgl;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.lwjgl.LWJGLException;
+import wjd.amb.AScene;
+import wjd.amb.AWindow;
 import wjd.amb.awt.AWTWindow;
-import wjd.amb.lwjgl.LWJGLWindow;
+import wjd.amb.control.EUpdateResult;
 import wjd.amb.resources.IResourceLoader;
+import wjd.amb.view.ICanvas;
 import wjd.math.V2;
 
 /**
  * @author wdyce
  * @since 07-Oct-2012
  */
-public abstract class AmbitionEngine
+public abstract class LWJGLAmbition
 {
 
   /* CLASS NAMESPACE CONSTANTS */
-  public static final Logger LOGGER = Logger.getLogger(AmbitionEngine.class.getName());
+  public static final Logger LOGGER = Logger.getLogger(LWJGLAmbition.class.getName());
 
   /* CLASS INITIALISATION */
   static
@@ -50,9 +53,31 @@ public abstract class AmbitionEngine
       LOGGER.log(Level.WARNING, ex.toString(), ex);
     }
   }
+  
+  /* MAIN */
+  public static void main(String args[])
+  {
+    launch("LWJGL Ambition", null, new AScene() 
+    {
+
+      @Override
+      public EUpdateResult update(int t_delta)
+      {
+        // do nothing and repeat
+        return EUpdateResult.CONTINUE;
+      }
+
+      @Override
+      public void render(ICanvas canvas)
+      {
+        canvas.clear();
+        canvas.text("Hello World!", V2.ORIGIN);
+      }
+    }, null);
+  }
 
   /* FUNCTIONS */
-
+  
   public static void launch(String window_name, V2 window_size,
                             AScene first_scene, IResourceLoader loader)
   {
