@@ -1,12 +1,9 @@
 --------------------------------------------------------------------------------
-"AMBITION" ENGINE
+"AMBITION" ENGINE -- LWJGL IMPLEMENTATION
 --------------------------------------------------------------------------------
 
-A 2D LWJGL-based game engine by William 'wilbefast' James Dyce
-
-A 2D Java game engine which aims to support multiple platforms seamlessly:
-- uses LWJGL (OpenGL) + SlickUtils  where hardware-accelerated graphics are
- available.
-- uses AWT where LWJGL cannot be used (eg. on ARM architectures).
-- uses the Android SDK for mobiles [not yet implemented].
-- uses Java/LWJGL appelts for online [not yet implemented].
+A reimplementation of the abstract "Ambition" game engine using LWJGL
+(Light-Weight Java Game-Library) for hardware-accelerated graphics. This has 
+been seperated from the main "Ambition" project so that people without need of
+OpenGL can compile the main project more easily, without having to worry about
+native libraries and dependencies.
